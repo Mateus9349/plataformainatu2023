@@ -1,0 +1,42 @@
+import { useState, useEffect } from "react";
+import './style.css'
+import botao from '../../assets/img/icon=continue.svg'
+
+export default function SectionProcessoInacabadoHome({ dadosDoBanco }) {
+
+  const [processo, setProcesso] = useState(true);
+
+  useEffect(() => {
+    if (dadosDoBanco && dadosDoBanco.length === 0) {
+      setProcesso(false);
+    } else {
+      setProcesso(true);
+    }
+  }, [dadosDoBanco]);
+
+  return (
+    <>
+      {processo ? (
+        <div className="remove-background">
+          <h1 className="title">Processos produtivos pendentes</h1>
+          {dadosDoBanco.map((item) => (
+            item.Finalizado === false && (
+              <div key={item.id} className="processo-div">
+                <p className="processo-item processo-item-id"># <span>{item.id}</span></p>
+                <p className="processo-item processo-item-nome"><span>{item.processo}</span></p>
+                <img className="processo-item-btn" src={botao} />
+              </div>
+            )
+          ))}
+        </div>
+      ) : (
+        <div className="box-text container-processos-pendentes">
+          <h1 className="titulo-1">Bem-vindo!</h1>
+          <p className="titulo-2" >Seus processos irão aparecer aqui</p>
+        </div>
+      )}
+    </>
+  );
+}
+
+
