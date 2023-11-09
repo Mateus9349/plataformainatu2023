@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const storedBaseURL = sessionStorage.getItem('baseURL');
+
 const http = axios.create({
-    baseURL: 'https://api.plataformainatu.com.br:4001/'
+    baseURL: storedBaseURL
 })
 
 export default http

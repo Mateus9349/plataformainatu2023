@@ -12,14 +12,16 @@ import Lotes from "../../pages/Lotes";
 import Cadastro from "../../pages/Cadastro";
 import Coletas from "../../pages/Coletas";
 import ColetasRecebidas from "../../pages/ColetasRecebidas";
-import LandPage from "../../pages/LandPage";
+import Associacoes from "../../pages/Associacoes";
+import Login from '../../pages/Login';
 
 export default function Rotas() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<LandPage/>}/>
-                <Route path="/landpage" element={<Home />} />
+                <Route path="/associacoes" element={<Associacoes/>}/>
+                <Route path="/login/:id" element={<Login/>}/>
+                <Route path="/" element={<Home />} />
                 <Route path="/processos" element={<Processos />} />
                 <Route path="/prepararLoteDeEntrada/:id" element={<PrepararLoteDeEntrada />} />
                 <Route path="/controleProcessos" element={<ControleProcessos />} />

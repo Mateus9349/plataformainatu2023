@@ -1,20 +1,21 @@
 import React from 'react';
-import './style.css'
+import './style.css';
 import logoInatu from '../../assets/img/logoInatu.svg';
+import { Link } from 'react-router-dom';
 
 export default function NavBar() {
     return (
         <header>
-            <a href="/">
+            <Link to="/">
                 <img src={logoInatu} alt="logo-inatu" className="logo" />
-            </a>
+            </Link>
             <nav className="navbar">
-                <a className="link link-cadastro" href="/cadastro">Cadastros</a>
-                <a className="link link-coletas" href="/coletas">Coletas</a>
-                <a className="link link-processos" href="/processos">Processamento</a>
-                <a className="link link-lotes" href="/lotes">Lotes</a>
-                <a className="link link-vendas" href="#">Vendas</a>
+                <Link to="/cadastro" className="link link-cadastro">Cadastros</Link>
+                <Link to="/coletas" className="link link-coletas">Coletas</Link>
+                <Link to="/processos" className="link link-processos">Processamento</Link>
+                <Link to="/lotes" className="link link-lotes">Lotes</Link>
+                <a href="#" className="link link-vendas">Vendas</a>
             </nav>
         </header>
-    )
+    );
 }

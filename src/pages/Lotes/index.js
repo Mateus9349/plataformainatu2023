@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CardLoteFinal from "../../Components/Cards/CardLoteFinal";
 import NavBar from "../../Components/NavBar";
-import http from '../../Components/http'
+import http from '../../Components/http';
 
 export default function Lotes() {
     const [lotes, setlotes] = useState([]);
