@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './style.css';
-import { useNavigate, useParams } from 'react-router-dom';
-import http from '../../Components/http';
+import { useParams } from 'react-router-dom';
 
 import inatu from '../../assets/log/inatu.svg';
 import ASAGA from '../../assets/log/asaga.svg';
@@ -16,17 +15,15 @@ import BackAPADRIT from '../../assets/telas/apadrit.png';
 import BackAPFOV from '../../assets/telas/apfov.png';
 import BackRDS from '../../assets/telas/rds.png';
 
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { auth } from '../../services/firebaseConfig';
+
 const Login = () => {
-    const navigate = useNavigate();
     const { id } = useParams();
     const [img, setImg] = useState(ASAGA);
     const [background, setBackground] = useState();
-    const [user, setUser] = useState('');
-    const [senha, setSenha] = useState('');
 
     useEffect(() => {
-        sessionStorage.clear();
-
         const config = {
             1: { img: ASAGA, background: BackASAGA, baseURL: 'https://api.plataformainatu.com.br:4001/' },
             2: { img: ASPACS, background: BackAPADRIT, baseURL: 'https://api.plataformainatu.com.br:5001/' },
@@ -43,23 +40,28 @@ const Login = () => {
         }
     }, [id]);
 
-    const LoginUser = async (e) => {
+
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+      ] = useSignInWithEmailAndPassword(auth);
+
+    function handleSingIn(e) {
         e.preventDefault();
+        signInWithEmailAndPassword(email, password);
+    }
 
-        try {
-            const res = await http.get('logins');
-            const userFound = res.data.find(item => item.nome === user && item.senha === senha);
-
-            if (userFound) {
-                navigate('/')
-            } else {
-                alert('Usuário ou senha incorretos!');
-                window.location.reload();
-            }
-        } catch (error) {
-            console.error('Erro durante a solicitação:', error);
-        }
-    };
+    if (loading) {
+        return <p>carregando...</p>
+    }
+    if(user){
+        return console.log(user)
+    }
 
     return (
         <>
@@ -77,21 +79,21 @@ const Login = () => {
                                 className="input"
                                 type="text"
                                 placeholder="CPF / CNPJ"
-                                value={user}
-                                onChange={(e) => setUser(e.target.value)}
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                             <input
                                 className="input1"
                                 type="password"
                                 placeholder="Senha"
-                                value={senha}
-                                onChange={(e) => setSenha(e.target.value)}
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                             <label className="esqueci-minha-senha">Esqueci minha senha</label>
                         </div>
                         <div className="cta" data-btn_entrar>
                             <a className="entrar-btn" href="">
-                                <div onClick={LoginUser} className="entrar">
+                                <div onClick={handleSingIn} className="entrar">
                                     Entrar
                                 </div>
                             </a>

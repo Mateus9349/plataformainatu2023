@@ -19,9 +19,9 @@ export default function Rotas() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/associacoes" element={<Associacoes/>}/>
+                <Route path="/" element={<Associacoes/>}/>
                 <Route path="/login/:id" element={<Login/>}/>
-                <Route path="/" element={<Home />} />
+                <Route path="/home" element={<Home />} />
                 <Route path="/processos" element={<Processos />} />
                 <Route path="/prepararLoteDeEntrada/:id" element={<PrepararLoteDeEntrada />} />
                 <Route path="/controleProcessos" element={<ControleProcessos />} />
