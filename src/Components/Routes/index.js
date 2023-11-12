@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "../../pages/Home";
 import Processos from "../../pages/Processos";
 import PrepararLoteDeEntrada from "../../pages/PrepararLoteDeEntrada";
@@ -17,10 +17,10 @@ import Login from '../../pages/Login';
 
 export default function Rotas() {
     return (
-        <BrowserRouter>
+        <Router>
             <Routes>
-                <Route path="/" element={<Associacoes/>}/>
-                <Route path="/login/:id" element={<Login/>}/>
+                <Route path="/" element={<Associacoes />} />
+                <Route path="/login/:id" element={<Login />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/processos" element={<Processos />} />
                 <Route path="/prepararLoteDeEntrada/:id" element={<PrepararLoteDeEntrada />} />
@@ -28,13 +28,14 @@ export default function Rotas() {
                 <Route path="/selecionarLote" element={<SelecionarLoteDeEntrada />} />
                 <Route path="/continuarProcesso" element={<ContinuarProcesso />} />
                 <Route path="/processamento/:id" element={<Processamento />} />
-                <Route path="/envase/:id" element={<Envase/>}/>
-                <Route path="/lotes" element={<Lotes/>} />
-                <Route path="/infoProd/:id" element={<InfoProd/>}/>
-                <Route path="/cadastro" element={<Cadastro/>}/>
-                <Route path="/coletas" element={<Coletas/>} />
-                <Route path="/coletasRecebidas" element={<ColetasRecebidas/>}/>
+                <Route path="/envase/:id" element={<Envase />} />
+                <Route path="/lotes" element={<Lotes />} />
+                <Route path="/infoProd/:id" element={<InfoProd />} />
+                <Route path="/cadastro" element={<Cadastro />} />
+                <Route path="/coletas" element={<Coletas />} />
+                <Route path="/coletasRecebidas" element={<ColetasRecebidas />} />
             </Routes>
-        </BrowserRouter>
-    )
+        </Router>
+    );
 }
+
