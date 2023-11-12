@@ -3,16 +3,32 @@ import SectionProcessoInacabadoHome from "../../Components/SectionProcessoInacab
 import './style.css';
 import { useState, useEffect } from 'react';
 import http from '../../Components/http/index.js';
+import { useAuth } from "../../context/AuthContext.js";
 
 export default function Home() {
+  const { user, loading} = useAuth();
   const [dadosDoBanco, setDados] = useState([]);
 
   useEffect(() => {
     http.get('processos')
       .then(res => {
         setDados(res.data);
-      });
-  }, []); // Adicione um array vazio como segundo argumento
+    });
+
+    console.log()
+  }, []);
+
+  if (!user) {
+    // Se o usuário não estiver autenticado, você pode redirecionar para a página de login ou fazer qualquer outra ação desejada
+    // Exemplo de redirecionamento usando react-router-dom:
+    // useHistory é um hook fornecido pelo react-router-dom
+    // import { useHistory } from 'react-router-dom';
+    // const history = useHistory();
+    // history.push('/login');
+    
+    // Ou renderizar uma mensagem de não autenticado
+    return <div>Você não está autenticado. Faça login para acessar esta página.</div>;
+  }
 
   return (
     <>
