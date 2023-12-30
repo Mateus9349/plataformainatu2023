@@ -1,3 +1,5 @@
+import './style.css';
+
 const CabecalhoCadastros = ({ mostrarFormulario }) => {
   return (
     <div className="cabecalho-cadastros">

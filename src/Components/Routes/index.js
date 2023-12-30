@@ -14,6 +14,7 @@ import Coletas from "../../pages/Coletas";
 import ColetasRecebidas from "../../pages/ColetasRecebidas";
 import Associacoes from "../../pages/Associacoes";
 import Login from '../../pages/Login';
+import InfoLote from "../../pages/InfoLote";
 
 export default function Rotas() {
     return (
@@ -31,6 +32,7 @@ export default function Rotas() {
                 <Route path="/envase/:id" element={<Envase />} />
                 <Route path="/lotes" element={<Lotes />} />
                 <Route path="/infoProd/:id" element={<InfoProd />} />
+                <Route path="/infoLote/:id" element={<InfoLote/>} />
                 <Route path="/cadastro" element={<Cadastro />} />
                 <Route path="/coletas" element={<Coletas />} />
                 <Route path="/coletasRecebidas" element={<ColetasRecebidas />} />

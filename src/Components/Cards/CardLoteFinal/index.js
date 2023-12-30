@@ -1,9 +1,14 @@
 import './style.css';
 import { iconsInatu } from '../../../js/iconsMateriasPrimas';
 import { valoresDaUsina } from '../../../js/padrão';
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { formatarData } from '../../../js/valueFormatter';
+
+
+import { TbInfoOctagonFilled } from "react-icons/tb";
+import { FcStatistics } from "react-icons/fc";
+import { MdQrCodeScanner } from "react-icons/md";
+
 
 export default function CardLoteFinal({ lotes }) {
   const formataNomeProduto = (produto) => {
@@ -42,11 +47,19 @@ export default function CardLoteFinal({ lotes }) {
               </p>
             </div>
 
-            <Link to={`/infoProd/${lote.id}`} state={{ lote }}>
-              <button id="pdf">
-                <img src="URL_DA_IMAGEM" />
-              </button>
-            </Link>
+            <div className='links-lote-final'>
+              <Link to={`/infoLote/${lote.id}`}>
+                {/* <button id="pdf"> */}
+                <TbInfoOctagonFilled style={{ color: 'black' }} />
+                {/* </button> */}
+              </Link>
+              <Link to={`/infoProd/${lote.id}`} state={{ lote }}>
+                <FcStatistics style={{ color: 'black' }} />
+              </Link>
+              <Link>
+                <MdQrCodeScanner style={{ color: 'black' }} />
+              </Link>
+            </div>
           </div>
         );
       })}

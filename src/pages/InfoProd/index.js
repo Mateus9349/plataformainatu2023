@@ -26,8 +26,8 @@ export default function InfoProd() {
           removeMilissegundosSegundos(gasto.createdAt).getTime() ===
           removeMilissegundosSegundos(lote.createdAt).getTime()
         );
-
         setGastos(encontrado);
+
       } catch (error) {
         console.error('Erro ao buscar os gastos produtivos:', error);
       }

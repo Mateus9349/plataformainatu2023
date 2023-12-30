@@ -6,17 +6,22 @@ import http from '../../Components/http/index.js';
 import { useAuth } from "../../context/AuthContext.js";
 
 export default function Home() {
-  const { user, loading} = useAuth();
+  const { user, loading, associacao, selectCont, cont} = useAuth();
   const [dadosDoBanco, setDados] = useState([]);
 
   useEffect(() => {
+
+    if(cont != 0){
+      selectCont(0);
+      window.location.reload();
+    }
+
     http.get('processos')
       .then(res => {
         setDados(res.data);
     });
-
-    console.log()
-  }, []);
+    
+  }, [user]);
 
   if (!user) {
     // Se o usuário não estiver autenticado, você pode redirecionar para a página de login ou fazer qualquer outra ação desejada

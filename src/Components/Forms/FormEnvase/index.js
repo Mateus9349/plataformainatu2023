@@ -56,7 +56,7 @@ export default function FormEnvase({ processo, depreciacao, energia, maoDeObra, 
                     text='Finalizar'
                     onClick={ async (e) => {
                         await finalizar(e, processo, depreciacao, energia, maoDeObra, materiaPrima, valor, quantidade, estoque, embalagemId);
-                        navigate('/')
+                        navigate('/home')
                     }}
                 />
             </form>

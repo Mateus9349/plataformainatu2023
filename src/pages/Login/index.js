@@ -24,22 +24,27 @@ const Login = () => {
   const [background, setBackground] = useState();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login, user, loading, signOut } = useAuth();
+  const { login, user, loading, signOut, selectAssoc, associacao, selectCont } = useAuth();
+
+  const config = {
+    1: { img: ASAGA, background: BackASAGA, baseURL: 'https://api.plataformainatu.com.br:4001/' },
+    2: { img: ASPACS, background: BackAPADRIT, baseURL: 'https://api.plataformainatu.com.br:5001/' },
+    3: { img: APADRIT, background: BackASPACS, baseURL: 'https://api.plataformainatu.com.br:6501/' },
+    4: { img: APFOV, background: BackAPFOV, baseURL: 'https://api.plataformainatu.com.br:7001/' },
+    5: { img: RDS, background: BackRDS, baseURL: 'https://api.plataformainatu.com.br:8001/' },
+  };
 
   useEffect(() => {
+
     signOut();
-    const config = {
-      1: { img: ASAGA, background: BackASAGA, baseURL: 'https://api.plataformainatu.com.br:4001/' },
-      2: { img: ASPACS, background: BackAPADRIT, baseURL: 'https://api.plataformainatu.com.br:5001/' },
-      3: { img: APADRIT, background: BackASPACS, baseURL: 'https://api.plataformainatu.com.br:6501/' },
-      4: { img: APFOV, background: BackAPFOV, baseURL: 'https://api.plataformainatu.com.br:7001/' },
-      5: { img: RDS, background: BackRDS, baseURL: 'https://api.plataformainatu.com.br:8001/' },
-    };
+
+    selectCont(1);
 
     if (config[id]) {
       const { img, background, baseURL } = config[id];
       setImg(img);
       setBackground(background);
+      selectAssoc(baseURL);
       sessionStorage.setItem('baseURL', baseURL);
     }
   }, [id]);
@@ -50,6 +55,7 @@ const Login = () => {
       await login(email, password);
       if(user){
         console.log('Usuário autenticado com sucesso!', user);
+
         navigate('/home')
       }
     } catch (error) {

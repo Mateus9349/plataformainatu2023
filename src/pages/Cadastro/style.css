@@ -16,8 +16,9 @@ main {
     margin-top: 40px;
 }
 
-.cabecalho-cadastros{
-    margin-left: 80px;
+.container-cadastros{
+    display: flex;
+    flex-direction: row;
 }
 
 h1 {
@@ -114,4 +115,10 @@ button[type="submit"] {
 
 .div-form{
     margin-left: 150px;
+}
+
+.alinhar-horizontal-form-maquinas{
+    display: flex;
+    flex-direction: row;
+    gap: 75px;
 }

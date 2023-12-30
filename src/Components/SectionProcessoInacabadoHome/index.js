@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import './style.css'
 import botao from '../../assets/img/icon=continue.svg'
+import { Link } from "react-router-dom";
 
 export default function SectionProcessoInacabadoHome({ dadosDoBanco }) {
 
@@ -24,7 +25,7 @@ export default function SectionProcessoInacabadoHome({ dadosDoBanco }) {
               <div key={item.id} className="processo-div">
                 <p className="processo-item processo-item-id"># <span>{item.id}</span></p>
                 <p className="processo-item processo-item-nome"><span>{item.processo}</span></p>
-                <img className="processo-item-btn" src={botao} />
+                <Link to={'/controleProcessos'}><img className="processo-item-btn" src={botao} /></Link>
               </div>
             )
           ))}

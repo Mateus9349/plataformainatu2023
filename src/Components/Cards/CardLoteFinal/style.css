@@ -92,3 +92,8 @@
 #pdf:hover{
     cursor: pointer;
 }
+
+.links-lote-final{
+    display: flex;
+    gap: 10px;
+}

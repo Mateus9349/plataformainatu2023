@@ -16,10 +16,10 @@ export default function CardLoteDeEntrada({ lotesEntrada }) {
     const mostrarComponente = (identificador, quantidade) => {
         setComponenteVisivel(true);
         setIdentificar(identificador);
-        setQuantidadeDividir(quantidade)
+        setQuantidadeDividir(quantidade);
     }
 
-    const iniciarProcesso = async (id, quantidade, extrativistas, locais, materiaPrima) => {
+    const iniciarProcesso = async (id, quantidade, extrativistas, locais, materiaPrima, valor_pago) => {
         const processo = {
             Despolpa: false,
             Destilacao: false,
@@ -36,7 +36,7 @@ export default function CardLoteDeEntrada({ lotesEntrada }) {
             Selecao_de_amendoas: false,
             Trituracao: false,
             cozimento: false,
-            despesas: 0,
+            despesas: valor_pago,
             estufagem: false,
             extrativistas: extrativistas,
             locais: locais,
@@ -77,7 +77,7 @@ export default function CardLoteDeEntrada({ lotesEntrada }) {
                         </div>
                         <div>
                             <Botao text='Iniciar Processo' onClick={() => 
-                                iniciarProcesso(lote.id, lote.quantidade, lote.extrativistas, lote.local, lote.materia_prima)} 
+                                iniciarProcesso(lote.id, lote.quantidade, lote.extrativistas, lote.local, lote.materia_prima, lote.valor_pago)} 
                             />
                             <BtnDividir text='Dividir lote' onClick={() => mostrarComponente(lote.id, lote.quantidade)} />
                         </div>

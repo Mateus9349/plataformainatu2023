@@ -9,6 +9,7 @@ export default function Lotes() {
     useEffect(() => {
         http.get('loteFinal').then(res => {
             setlotes(res.data)
+            console.log(res.data)
         }).catch(error => {
             alert(error)
         });

@@ -10,8 +10,11 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
+  const [associacao, setAssociacao] = useState('');
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const [cont, setCont] = useState(0);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(firebaseAuth, (user) => {
@@ -30,6 +33,14 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const selectAssoc = (http) => {
+    setAssociacao(http)
+  }
+
+  const selectCont = (num) => {
+    setCont(num);
+  }
+
   const value = {
     user,
     loading,
@@ -37,6 +48,10 @@ export const AuthProvider = ({ children }) => {
     signOut: () => {
       signOut(firebaseAuth);
     },
+    associacao,
+    selectAssoc,
+    cont,
+    selectCont,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

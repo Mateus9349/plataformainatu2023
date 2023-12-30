@@ -1,0 +1,10 @@
+
+.div-titulo{
+    background: url('../../assets/img/Default_brown_and_green_rainforest_flat_minimal_illustration_1_21b45312-ccf3-486b-859f-62e4ec2263d9_1\ 1.png');
+    width: 100%;
+    border-radius: 25px;
+}
+
+.div-titulo img{
+    margin-left: 25px;
+}

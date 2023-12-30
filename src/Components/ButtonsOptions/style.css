@@ -1,0 +1,16 @@
+.btns-icon{
+    display: flex;
+}
+
+.btns{
+    background: none;
+    border: none;
+}
+
+.btns img{
+    width: 35px;
+
+}
+.btns img:hover{
+    cursor: pointer;
+}

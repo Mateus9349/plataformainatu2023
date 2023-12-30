@@ -52,21 +52,24 @@ span {
     border: 1px solid var(--grayscale-300, #CAC4C4);
     background: var(--grayscale-000, #FFF);
     justify-content: center;
-    max-width: 85%;
-    max-height: 60vh;
+    max-width: 90%;
+    max-height: max-content;
     background-image: none;
+    background-color: bisque;
 }
 
 .title {
     grid-area: title;
+    color: #653024;
     font-family: 'basic';
     font-style: normal;
     font-weight: 700;
-    font-size: 25px;
+    font-size: 35px;
     line-height: 24px;
     margin: 25px 0 auto 0;
     position: relative;
     left: -7%;
+    text-align: center;
 }
 
 .box-text {
