@@ -1,6 +1,6 @@
 .container-info-lote{
     display: grid;
-    background-color: antiquewhite;
+    
     grid-template-areas: "p p p" "l l e";
     width: 100vw;
     gap: 25px;
@@ -10,7 +10,7 @@
 .info-produto{
     display: flex;
     align-items: center;
-    background-image: url('../../assets/img/Artboard\ 5.svg');
+    background-image: url('../../assets/img/Default_brown_and_green_rainforest_flat_minimal_illustration_1_21b45312-ccf3-486b-859f-62e4ec2263d9_1\ 1.png');
     background-color: red;
     grid-area: p;
     border-radius: 25px;
@@ -45,7 +45,7 @@
     flex-direction: column;
     background-color: blue;
     grid-area: e;
-    background-image: url('../../assets/img/Artboard\ 5.svg');
+    background-image: url('../../assets/img/bg-oleo-red.svg');
     border-radius: 25px;
 }
 .info-extrativistas img{

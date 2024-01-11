@@ -1,39 +1,50 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import http from "../../Components/http";
 import { iconsInatuPublic } from '../../js/iconsMateriasPrimas';
 import imgExtrativista from '../../assets/img/extrativista.svg';
-import imgLocation from '../../assets/img/localizacao.jpg';
-
-
+import axios from "axios";
 import MapComponent from "../../Components/MapComponent";
-import OpenLayersMap from "../../Components/OpenLayersMap";
-
-import './style.css'
+import './style.css';
+import { useAuth } from "../../context/AuthContext";
 
 const InfoLote = () => {
+    const { user, loading, associacao, selectCont, cont} = useAuth();
+    const { name, id } = useParams();
 
-    const { id } = useParams();
+    const config = [
+        { img: 'ASAGA', baseURL: 'https://api.plataformainatu.com.br:4001/' },
+        { img: 'ASPACS', baseURL: 'https://api.plataformainatu.com.br:5001/' },
+        { img: 'APADRIT', baseURL: 'https://api.plataformainatu.com.br:6501/' },
+        { img: 'APFOV', baseURL: 'https://api.plataformainatu.com.br:7001/' },
+        { img: 'RDS', baseURL: 'https://api.plataformainatu.com.br:8001/' },
+    ];
+
     const [produto, setProduto] = useState('');
     const [locais, setLocais] = useState([]);
     const [extrativistas, setExtrativistas] = useState([]);
 
-    const position = [51.505, -0.09]; // Posição inicial do mapa (latitude, longitude)
+    const position = [-7.1944, -59.8961];
     const points = [
-        { id: 1, position: [51.505, -0.09], name: 'Ponto 1' },
-        { id: 2, position: [51.515, -0.10], name: 'Ponto 2' },
-        // Adicione mais pontos conforme necessário
+        { id: 1, position: [-7.1944, -59.8961], name: 'Ponto 1' },
+        { id: 2, position: [-7.1844, -59.8961], name: 'Ponto 2' },
     ];
 
     useEffect(() => {
-        http.get(`loteFinal/${id}`).then(res => {
+        const itemConfig = config.find(item => item.img === name);
+        if (!itemConfig) return;
+
+        const httpInstance = axios.create({
+            baseURL: itemConfig.baseURL
+        });
+
+        httpInstance.get(`loteFinal/${id}`).then(res => {
             setProduto(res.data.produto);
             setLocais(res.data.local.split(','));
             setExtrativistas(res.data.extrativistas.split(','));
         }).catch(error => {
             alert(`Error: ${error}`);
         });
-    }, [])
+    }, [id, name]);
 
     return (
         <>
@@ -45,7 +56,7 @@ const InfoLote = () => {
                 </div>
 
                 <div className="info-locais">
-                    <MapComponent position={position} points={points}/>
+                    <MapComponent position={position} points={points} />
                     <h1>Locais de coleta:</h1>
                     {locais.map(item => (
                         <h1 key={item}>{item}</h1>

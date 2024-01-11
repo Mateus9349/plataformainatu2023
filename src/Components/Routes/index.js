@@ -32,7 +32,7 @@ export default function Rotas() {
                 <Route path="/envase/:id" element={<Envase />} />
                 <Route path="/lotes" element={<Lotes />} />
                 <Route path="/infoProd/:id" element={<InfoProd />} />
-                <Route path="/infoLote/:id" element={<InfoLote/>} />
+                <Route path="/infoLote/:id/:name" element={<InfoLote/>} />
                 <Route path="/cadastro" element={<Cadastro />} />
                 <Route path="/coletas" element={<Coletas />} />
                 <Route path="/coletasRecebidas" element={<ColetasRecebidas />} />
