@@ -1,18 +1,44 @@
+import React, { useState } from 'react';
+import http from '../../http';
+
 const FormEmbalagem = () => {
-    return(
+    const [nome, setNome] = useState('');
+    const [valor, setValor] = useState('');
+    const [quantidade, setQuantidade] = useState('');
+
+    const cadastrar = (e) => {
+        e.preventDefault();
+
+        const formData = {
+            nome: nome,
+            valor: valor,
+            quantidade: quantidade
+        };
+
+        http.post('/embalagens', formData)
+            .then(res => {
+                console.log('Formulário de Embalagem enviado com sucesso:', res.data);
+            })
+            .catch(error => {
+                console.error('Erro ao enviar formulário de Embalagem:', error);
+                alert('Operação não realizada!');
+            });
+    }
+
+    return (
         <div className="embalagem-cadastro-inativo div-form">
             <form action="" className="extra">
 
-                <label for="">Nome:</label>
-                <input type="text" placeholder="saco, balde"/>
+                <label htmlFor="">Nome:</label>
+                <input type="text" placeholder="saco, balde" onChange={(e) => setNome(e.target.value)} />
 
-                <label for="">Valor:</label>
-                <input type="number" placeholder="0,00 R$"/>
+                <label htmlFor="">Valor:</label>
+                <input type="number" placeholder="0,00 R$" onChange={(e) => setValor(e.target.value)} />
 
-                <label for="">Quantidade</label>
-                <input type="number"/>
+                <label htmlFor="">Quantidade</label>
+                <input type="number" onChange={(e) => setQuantidade(e.target.value)} />
 
-                <button type="submit">Cadastrar</button>
+                <button type="submit" onClick={cadastrar}>Cadastrar</button>
             </form>
         </div>
     )
