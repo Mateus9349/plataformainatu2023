@@ -273,7 +273,7 @@ async function atualizaProcessoEtapaCitronela(higenizacao, destilacao, filtragem
 
 function atualizaProcessoBreu(id, etapa, quantidade_de_entrada) {
     switch (etapa) {
-        case 'selecao-primaria':
+        case 'higienizacao':
             return atualizaProcessoEtapaBreu(false, true, false, quantidade_de_entrada, id, etapa)
             break;
         case 'destilacao':
@@ -291,7 +291,7 @@ async function atualizaProcessoEtapaBreu(selecaoPrimaria, destilacao, filtragem,
         Quantidade_de_entrada: quantidade_de_entrada,
         Destilacao: destilacao,
         Filtragem: filtragem,
-        selecao_primaria: selecaoPrimaria
+        Higenizacao_selecao: selecaoPrimaria
     }
 
     await http.put(`processos/${id}`, dados).then(res => {
@@ -306,7 +306,7 @@ async function atualizaProcessoEtapaBreu(selecaoPrimaria, destilacao, filtragem,
 
 function atualizaProcessoCastanha(id, etapa, quantidade_de_entrada) {
     switch (etapa) {
-        case 'selecao-primaria':
+        case 'higienizacao':
             return atualizaProcessoEtapaCastanha(false, true, false, false, false, false, false, quantidade_de_entrada, id, etapa)
             break;
         case 'secagem':
@@ -335,7 +335,7 @@ function atualizaProcessoCastanha(id, etapa, quantidade_de_entrada) {
 async function atualizaProcessoEtapaCastanha(selecao, secagem, cozimento, quebra, estufagem, separacao, filtragem, quantidade_de_entrada, id, etapa) {
     const dados = {
         Quantidade_de_entrada: quantidade_de_entrada,
-        selecao_primaria: selecao,
+        Higenizacao_selecao: selecao,
         Secagem: secagem,
         cozimento: cozimento,
         Quebra_de_sementes: quebra,

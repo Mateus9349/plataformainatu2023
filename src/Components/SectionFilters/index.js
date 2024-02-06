@@ -1,20 +1,21 @@
-import './style.css';
+import React from 'react';
+import styles from './SectionFilters.module.css';
 
 const SectionFilters = ({ icon, nome }) => {
     return (
-        <div className="filtro">
-            <div className="titulo-form">
-                <div className="div-titulo">
-                    <img src={icon} />
+        <div className={styles.filtro}>
+            <div className={styles.tituloForm}>
+                <div className={styles.divTitulo}>
+                    <img src={icon} alt={`Ícone de ${nome}`} />
                     <h1>{nome}</h1>
                 </div>
 
                 <h2>Ordenar por:</h2>
 
-                <form action="" className="form-filtro">
+                <form action="" className={styles.formFiltro}>
                     <div>
                         <input type="radio" name="nome" value="alfabetica" />
-                        <label>Ordem alfabetica</label>
+                        <label>Ordem alfabética</label>
                     </div>
                     <div>
                         <input type="radio" name="nome" value="data" />
@@ -31,12 +32,12 @@ const SectionFilters = ({ icon, nome }) => {
                 </form>
             </div>
 
-            <div className="buscas">
-                <input type="text"/>
+            <div className={styles.buscas}>
+                <input type="text" />
                 <button>Buscar</button>
             </div>
         </div>
-    )
+    );
 }
 
 export default SectionFilters;

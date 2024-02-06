@@ -1,18 +1,21 @@
 import { formatarData, formatarReais } from "../../js/valueFormatter";
 import ButtonsOptions from "../ButtonsOptions";
 
-import './style.css';
+import styles from './ContainerCollects.module.css';
 
 const ContainerCollects = ({ collection, icon }) => {
     return (
-        <div className="coleta">
+        <div className={styles.containerColeta}>
             {collection.map(item => (
-                <div key={item.id}>
-                    <img id="imagem" src={icon} alt={item.materia_prima} />
-                    <p id="nome">{item.materia_prima}</p>
-                    <p id="data">{formatarData(item.data_entrada)}</p>
-                    <p id="quantidade">{`${item.quantidade} kg`}</p>
-                    <p id="preco">{`R$ ${formatarReais(item.valor_pago)}`}</p>
+                <div>
+                    <div className={styles.coleta} key={item.id}>
+                        <img id={styles.imagem} src={icon} alt={item.materia_prima} />
+                        <p id={styles.extrativista}>{item.extrativista}</p>
+                        <p id={styles.nome}>{item.materia_prima}</p>
+                        <p id={styles.data}>{formatarData(item.data_entrada)}</p>
+                        <p id={styles.quantidade}>{`${item.quantidade} kg`}</p>
+                        <p id={styles.preco}>{`${formatarReais(item.valor_pago)}`}</p>
+                    </div>
                     <ButtonsOptions/>
                 </div>
             ))}

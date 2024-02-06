@@ -154,6 +154,7 @@
   overflow: hidden;
   display: flex;
   align-items: center;
+  min-height: 75%;
 }
 .content {
   border-radius: 32px;

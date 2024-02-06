@@ -77,7 +77,7 @@ const Login = () => {
             <input
               className="input"
               type="text"
-              placeholder="CPF / CNPJ"
+              placeholder="E-mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -88,7 +88,7 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <label className="esqueci-minha-senha">Esqueci minha senha</label>
+            {/* <label className="esqueci-minha-senha">Esqueci minha senha</label> */}
           </div>
           <div className="cta" data-btn_entrar>
             <button className="entrar-btn" onClick={handleSignIn}>
@@ -96,7 +96,7 @@ const Login = () => {
             </button>
             <label className="v22-idesam">V2.2 © Idesam 2023</label>
           </div>
-          <a className="cadastrar-se">Cadastrar-se</a>
+          {/* <a className="cadastrar-se">Cadastrar-se</a> */}
         </div>
       </section>
     </article>

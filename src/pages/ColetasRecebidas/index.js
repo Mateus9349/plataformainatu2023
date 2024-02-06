@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import NavBar from "../../Components/NavBar";
 import { materiasPrimasNomeImg, iconsInatu } from "../../js/iconsMateriasPrimas";
 import http from '../../Components/http';
-import './style.css';
+import styles from './ColetasRecebidas.module.css';
 import AllCollects from "../../Components/AllCollects";
 
 const ColetasRecebidas = () => {
@@ -27,15 +27,15 @@ const ColetasRecebidas = () => {
         <>
             <NavBar />
             {visivel &&
-                <div className="main-coletasRecebidas">
+                <div className={styles.mainColetasRecebidas}>
                     <h1>Coletas</h1>
                     <h2>Selecione a matéria-prima</h2>
-                    <div className="container-materias-primas">
+                    <div className={styles.containerMateriasPrimas}>
                         {materiasPrimasNomeImg.map(({ nomeA, nomeB, nomeDataBase }) => (
-                            <div key={nomeA} className="card-materiaPrima">
+                            <div key={nomeA} className={styles.cardMateriaPrima}>
                                 <img
                                     src={iconsInatu[nomeA]}
-                                    className="icon"
+                                    className={styles.icon}
                                     alt={`Ícone de ${nomeB}`}
                                     style={{ width: "25px", height: "25px", marginRight: "10px" }}
                                 />

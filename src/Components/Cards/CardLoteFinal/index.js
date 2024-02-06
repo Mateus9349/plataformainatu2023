@@ -66,7 +66,7 @@ export default function CardLoteFinal({ lotes }) {
             </div>
 
             <div className='links-lote-final'>
-              <Link to={`/infoLote/${lote.id}/${association}`}>
+              <Link to={`https://page-info-azure.vercel.app/?id=${lote.id}&name=${association.toLowerCase()}`}>
                 <TbInfoOctagonFilled style={{ color: 'black' }} />
               </Link>
               <Link to={`/infoProd/${lote.id}`} state={{ lote }}>

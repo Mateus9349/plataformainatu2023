@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import SectionFilters from "../SectionFilters";
 import ContainerCollects from "../ContainerCollects";
 
-import './style.css';
+import styles from './AllCollects.module.css';
 
 const AllCollects = ({icon, nome, collection}) => {
     const [filterCollects, setFilterCollects] = useState([]);
@@ -14,7 +14,7 @@ const AllCollects = ({icon, nome, collection}) => {
     }, [])
 
     return(
-        <div className="AllCollects">
+        <div className={styles.AllCollects}>
             <SectionFilters icon={icon} nome={nome}/>
             <ContainerCollects collection={filterCollects} icon={icon}/>
         </div>

@@ -41,7 +41,7 @@
     content: url('../../../assets/img/status=check.svg');
 }
 
-#id {
+#idLT {
     grid-column-start: 1;
     grid-column-end: 1;
     grid-row-start: 1;
@@ -52,19 +52,19 @@
     gap: 15px;
 }
 
-#data {
+#dataLT {
     grid-column-start: 5;
     grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 2;
 }
 
-#materia-prima::before {
+#materia-primaLT::before {
     content: url('../../../assets/icons_inatu/icon=droplet-solid\ 1.svg');
     justify-items: center;
 }
 
-#materia-prima {
+#materia-primaLT {
     grid-column-start: 2;
     grid-column-end: 2;
     grid-row-start: 1;
@@ -75,28 +75,28 @@
     gap: 15px;
 }
 
-#extrativista {
+#extrativistaLT {
     grid-column-start: 4;
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 1;
 }
 
-#local {
+#localLT {
     grid-column-start: 4;
     grid-column-end: 4;
     grid-row-start: 2;
     grid-row-end: 2;
 }
 
-#quantidade {
+#quantidadeLT {
     grid-column-start: 3;
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 3;
 }
 
-#preco {
+#precoLT {
     grid-column-start: 5;
     grid-column-end: 5;
     grid-row-start: 2;

@@ -1,24 +1,29 @@
-.coleta {
+.containerColeta {
     margin-right: 8%;
     border-radius: 32px;
     background: var(--grayscale-000, #f0ecec);
     box-shadow: 0px 3px 18px 0px rgba(255, 14, 14, 0.07);
     min-width: 20vw;
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     margin-left: 35px;
     gap: 25px;
 }
 
-.coleta div {
+.containerColeta div{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.coleta {
     display: grid;
     grid-template-areas:
-        "imagem nome data"
-        "imagem quantidade preco"
-        "btns btns btns"
+        "imagem nome extra data"
+        "imagem nome quantidade preco"
+        "btns btns btns btns"
     ;
-    width: 70%;
+    gap: 25px;
     border-bottom: 5px solid var(--Marrom-Claro, #F6EBDF);
     background: var(--Grayscale-000, #FFF);
     border-radius: 25px;
@@ -30,8 +35,13 @@
     margin-left: 15px;
 }
 
+#extrativista{
+    grid-area: extra;
+}
+
 #nome {
     grid-area: nome;
+    align-self: center;
 }
 
 #data {
@@ -44,8 +54,4 @@
 
 #preco {
     grid-area: preco;
-}
-
-.btns-icon{
-    grid-area: btns;
 }

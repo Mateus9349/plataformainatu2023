@@ -1,5 +1,5 @@
-.btns-icon{
-    display: flex;
+.btns_icon{
+    background-color: aqua;
 }
 
 .btns{
@@ -9,8 +9,8 @@
 
 .btns img{
     width: 35px;
-
 }
+
 .btns img:hover{
     cursor: pointer;
 }

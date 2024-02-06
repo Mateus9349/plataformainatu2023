@@ -78,13 +78,13 @@ export default function CardColetaLoteDeEntrada({ coletas, materiaPrima }) {
                     key={item.id}
                     onClick={() => handleClickCard(item)}
                 >
-                    <p className={`text-item item-id ${cardsClicados.includes(item.id) ? 'text-item item-id-check' : ''}`} id="id">{item.id}</p>
-                    <p className="text-item" id="data">{formatarData(item.data_entrada)}</p>
-                    <p className="text-item" id="materia-prima">{item.materia_prima}</p>
-                    <p className="text-item" id="extrativista">{item.extrativista}</p>
-                    <p className="text-item" id="local">{item.local}</p>
-                    <p className="text-item" id="quantidade">{formatarPeso(item.quantidade)}</p>
-                    <p className="text-item" id="preco"><span id="preço">{formatarReais(item.valor_pago)}</span></p>
+                    <p className={`text-item item-id ${cardsClicados.includes(item.id) ? 'text-item item-id-check' : ''}`} id="idLT">{item.id}</p>
+                    <p className="text-item" id="dataLT">{formatarData(item.data_entrada)}</p>
+                    <p className="text-item" id="materia-primaLT">{item.materia_prima}</p>
+                    <p className="text-item" id="extrativistaLT">{item.extrativista}</p>
+                    <p className="text-item" id="localLT">{item.local}</p>
+                    <p className="text-item" id="quantidadeLT">{formatarPeso(item.quantidade)}</p>
+                    <p className="text-item" id="precoLT"><span id="preço">{formatarReais(item.valor_pago)}</span></p>
                 </div>
             ))}
             <div className='container'>

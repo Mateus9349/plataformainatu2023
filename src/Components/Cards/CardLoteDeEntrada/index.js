@@ -6,12 +6,15 @@ import CampoDividir from "../../CampoDividir";
 import Botao from "../../Botao";
 import http from "../../http";
 import { formatarTextoComAcento } from "../../../js/valueFormatter";
+import { useNavigate } from "react-router-dom";
 
 export default function CardLoteDeEntrada({ lotesEntrada }) {
     const lotes = lotesEntrada.filter(lote => lote.ativo === true);
     const [componenteVisivel, setComponenteVisivel] = useState(false);
     const [identificador, setIdentificar] = useState(0);
     const [quantidadeDividir, setQuantidadeDividir] = useState(0);
+
+    const navigate = useNavigate();
 
     const mostrarComponente = (identificador, quantidade) => {
         setComponenteVisivel(true);
@@ -61,7 +64,7 @@ export default function CardLoteDeEntrada({ lotesEntrada }) {
             console.log(`Error ao atualizar o lote: `, error)
         })
 
-        window.location.reload()
+        navigate('/controleProcessos');
     }
 
     return (
@@ -77,7 +80,7 @@ export default function CardLoteDeEntrada({ lotesEntrada }) {
                         </div>
                         <div>
                             <Botao text='Iniciar Processo' onClick={() => 
-                                iniciarProcesso(lote.id, lote.quantidade, lote.extrativistas, lote.local, lote.materia_prima, lote.valor_pago)} 
+                                iniciarProcesso(lote.id, lote.quantidade, lote.extrativista, lote.local, lote.materia_prima, lote.valor_pago)} 
                             />
                             <BtnDividir text='Dividir lote' onClick={() => mostrarComponente(lote.id, lote.quantidade)} />
                         </div>

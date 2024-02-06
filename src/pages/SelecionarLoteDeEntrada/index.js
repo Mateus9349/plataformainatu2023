@@ -10,7 +10,6 @@ export default function SelecionarLoteDeEntrada() {
         http.get('loteEntradas')
         .then(res=>{
             setlotesEntrada(res.data);
-            console.log(res.data)
         })
     }, []);
 

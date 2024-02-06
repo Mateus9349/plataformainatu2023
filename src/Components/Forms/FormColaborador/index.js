@@ -10,8 +10,9 @@ const FormColaborador = () => {
     const [valorHora, setValorHora] = useState('');
     const [diaria, setDiaria] = useState('');
 
-    const cadastrar = () => {
-        
+    const cadastrar = (e) => {
+        e.preventDefault();
+
         const formData = {
             nome: nome,
             idade: idade,
@@ -24,7 +25,14 @@ const FormColaborador = () => {
 
         http.post('/funcionarios', formData)
             .then(res => {
-                console.log('Formulário de Colaborador enviado com sucesso:', res.data);
+                alert('Formulário de Colaborador enviado com sucesso:', res.data);
+                setNome('');
+                setIdade('');
+                setSexo('M');
+                setComunidade('');
+                setFuncao('');
+                setValorHora('');
+                setDiaria('');
             })
             .catch(error => {
                 console.error('Erro ao enviar formulário de Colaborador:', error);
@@ -34,33 +42,33 @@ const FormColaborador = () => {
 
     return (
         <div className="funcionario-cadastro-inativo div-form">
-            <form action="" className="extra">
+            <form action="" className="extra" onSubmit={cadastrar}>
 
                 <label htmlFor="">Nome:</label>
-                <input type="text" placeholder="Insira seu nome" onChange={(e) => setNome(e.target.value)} />
+                <input type="text" placeholder="Insira seu nome" value={nome} onChange={(e) => setNome(e.target.value)} />
 
                 <label htmlFor="">Idade:</label>
-                <input type="number" onChange={(e) => setIdade(e.target.value)} />
+                <input type="number" value={idade} onChange={(e) => setIdade(e.target.value)} />
 
                 <label>Sexo</label>
-                <select name="sexo" onChange={(e) => setSexo(e.target.value)}>
+                <select name="sexo" value={sexo} onChange={(e) => setSexo(e.target.value)}>
                     <option value="M">M</option>
                     <option value="F">F</option>
                 </select>
 
                 <label htmlFor="">Comunidade:</label>
-                <input type="text" placeholder="comunidade/distrito/rio/igarapé" onChange={(e) => setComunidade(e.target.value)} />
+                <input type="text" placeholder="comunidade/distrito/rio/igarapé" value={comunidade} onChange={(e) => setComunidade(e.target.value)} />
 
                 <label htmlFor="">Função:</label>
-                <input type="text" placeholder="Ex. Operador de máquina" onChange={(e) => setFuncao(e.target.value)} />
+                <input type="text" placeholder="Ex. Operador de máquina" value={funcao} onChange={(e) => setFuncao(e.target.value)} />
 
                 <label htmlFor="">Valor Hora:</label>
-                <input type="number" placeholder="Valor/hora R$" onChange={(e) => setValorHora(e.target.value)} />
+                <input type="number" placeholder="Valor/hora R$" value={valorHora} onChange={(e) => setValorHora(e.target.value)} />
 
                 <label htmlFor="">Diária:</label>
-                <input type="number" placeholder="Valor diária R$" onChange={(e) => setDiaria(e.target.value)} />
+                <input type="number" placeholder="Valor diária R$" value={diaria} onChange={(e) => setDiaria(e.target.value)} />
 
-                <button type="submit" onClick={cadastrar}>Cadastrar</button>
+                <button type="submit">Cadastrar</button>
             </form>
         </div>
     )

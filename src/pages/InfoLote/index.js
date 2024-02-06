@@ -39,8 +39,8 @@ const InfoLote = () => {
 
         httpInstance.get(`loteFinal/${id}`).then(res => {
             setProduto(res.data.produto);
-            setLocais(res.data.local.split(','));
-            setExtrativistas(res.data.extrativistas.split(','));
+            setLocais(res.data.local.split('|'));
+            setExtrativistas(res.data.extrativistas.split('|'));
         }).catch(error => {
             alert(`Error: ${error}`);
         });

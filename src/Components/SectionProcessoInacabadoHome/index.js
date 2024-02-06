@@ -1,17 +1,17 @@
-import { useState, useEffect } from "react";
-import './style.css'
-import botao from '../../assets/img/icon=continue.svg'
+import React, { useState, useEffect } from "react";
+import './style.css';
+import botao from '../../assets/img/icon=continue.svg';
 import { Link } from "react-router-dom";
 
 export default function SectionProcessoInacabadoHome({ dadosDoBanco }) {
-
-  const [processo, setProcesso] = useState(true);
+  const [processo, setProcesso] = useState(false);
 
   useEffect(() => {
-    if (dadosDoBanco && dadosDoBanco.length === 0) {
-      setProcesso(false);
+    if (dadosDoBanco && dadosDoBanco.length > 0) {
+      const temProcessoInacabado = dadosDoBanco.some(item => item.Finalizado === false);
+      setProcesso(temProcessoInacabado);
     } else {
-      setProcesso(true);
+      setProcesso(false);
     }
   }, [dadosDoBanco]);
 
@@ -39,5 +39,3 @@ export default function SectionProcessoInacabadoHome({ dadosDoBanco }) {
     </>
   );
 }
-
-

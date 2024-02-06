@@ -12,7 +12,8 @@ const FormMaquina = () => {
     const [diasTrabalhados, setDiasTrabalhados] = useState('');
     const [horasTrabalhadas, setHorasTrabalhadas] = useState('');
 
-    const cadastrar = () => {
+    const cadastrar = (e) => {
+        e.preventDefault();
 
         const formData = {
             nome: nome,
@@ -28,24 +29,33 @@ const FormMaquina = () => {
 
         http.post('/maquinas', formData)
             .then(res => {
-                console.log('Formulário enviado com sucesso:', res.data);
+                alert('Formulário de Máquina enviado com sucesso:', res.data);
+                setNome('');
+                setTipoMaquina('higienizadora');
+                setEnergia('kw');
+                setPotencia('');
+                setValor('');
+                setDataAquisicao('');
+                setVidaUtil('');
+                setDiasTrabalhados('');
+                setHorasTrabalhadas('');
             })
             .catch(error => {
-                console.error('Erro ao enviar formulário:', error);
+                console.error('Erro ao enviar formulário de Máquina:', error);
                 alert('Operação não realizada!');
             });
     }
 
     return (
         <div className="maquinario-cadastro-inativo div-form">
-            <form action="" className="extra alinhar-horizontal-form-maquinas">
+            <form action="" className="extra alinhar-horizontal-form-maquinas" onSubmit={cadastrar}>
 
                 <div>
                     <label>Nome:</label>
-                    <input type="text" placeholder="Insira seu nome" onChange={(e) => setNome(e.target.value)} />
+                    <input type="text" placeholder="Insira seu nome" value={nome} onChange={(e) => setNome(e.target.value)} />
 
                     <label>Tipo da máquina</label>
-                    <select onChange={(e) => setTipoMaquina(e.target.value)}>
+                    <select value={tipoMaquina} onChange={(e) => setTipoMaquina(e.target.value)}>
                         <option value="higienizadora">Higienizadora</option>
                         <option value="seletora">Seletora</option>
                         <option value="quebradora">Quebradora</option>
@@ -58,32 +68,32 @@ const FormMaquina = () => {
                     </select>
 
                     <label>Energia</label>
-                    <select onChange={(e) => setEnergia(e.target.value)}>
+                    <select value={energia} onChange={(e) => setEnergia(e.target.value)}>
                         <option value="kw">Rede Elétrica</option>
                         <option value="diesel">Motor Estacionário</option>
                     </select>
 
                     <label>Potência</label>
-                    <input type="number" placeholder="kW" onChange={(e) => setPotencia(e.target.value)} />
+                    <input type="number" placeholder="kW" value={potencia} onChange={(e) => setPotencia(e.target.value)} />
 
                     <label>Valor</label>
-                    <input type="number" placeholder="0,00 R$" onChange={(e) => setValor(e.target.value)} />
+                    <input type="number" placeholder="0,00 R$" value={valor} onChange={(e) => setValor(e.target.value)} />
                 </div>
 
                 <div>
                     <label>Data de Aquisição</label>
-                    <input type="date" onChange={(e) => setDataAquisicao(e.target.value)} />
+                    <input type="date" value={dataAquisicao} onChange={(e) => setDataAquisicao(e.target.value)} />
 
                     <label>Vida Útil</label>
-                    <input type="number" onChange={(e) => setVidaUtil(e.target.value)} />
+                    <input type="number" value={vidaUtil} onChange={(e) => setVidaUtil(e.target.value)} />
 
                     <label>Dias trabalhados</label>
-                    <input type="number" onChange={(e) => setDiasTrabalhados(e.target.value)} />
+                    <input type="number" value={diasTrabalhados} onChange={(e) => setDiasTrabalhados(e.target.value)} />
 
                     <label>Horas trabalhadas</label>
-                    <input type="number" onChange={(e) => setHorasTrabalhadas(e.target.value)} />
+                    <input type="number" value={horasTrabalhadas} onChange={(e) => setHorasTrabalhadas(e.target.value)} />
 
-                    <button type="submit" onClick={cadastrar}>Cadastrar</button>
+                    <button type="submit">Cadastrar</button>
                 </div>
             </form>
         </div>
